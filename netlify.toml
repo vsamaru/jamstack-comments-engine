@@ -1,5 +1,5 @@
 [build]
-  Functions = "functions"
+  #Functions = "functions"
   command = "yarn run build"
   publish = "dist"
-  NODE_ENV = "10.15.3"
+  #NODE_ENV = "10.15.3"
