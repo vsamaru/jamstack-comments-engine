@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn run build:local && yarn run watch",
-    "build": "gulp build && yarn run build:functions",
+    "build": "gulp build",
     "gen": "gulp generate",
     "gather": "gulp get:comments",
     "build:local": "gulp build:local && yarn run build:functions",
