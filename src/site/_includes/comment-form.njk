@@ -7,24 +7,85 @@
   Read about <a href="/about">how this works</a>.
 </p>
 
-<form name="comments-queue" netlify-honeypot="full-name" action="/thanks" netlify>
-  <p class="honey">
-    <input name="path" type="hidden" value="{{ page.url }}">
-    <label>Your full name: <input name="full-name"></label>
-  </p>
-  <p>
-    <label for="name">Your name<small>What should I call you?</small></label>
-    <input type="text" name="name" id="name">
-  </p>
-  <p>
-    <label for="email">Your email<small>I'll never spam you. I promise.</small></label>
-    <input type="email" name="email" id="email">
-  </p>
-  <p>
-    <label for="comment">Your comment<small>Markdown is fine.</small></label>
-    <textarea name="comment" id="comment"></textarea>
-  </p>
-  <p>
-    <button type="submit" class="btn">Post your comment</button>
-  </p>
-</form>
+        <div className="container">
+          <section>
+            <label>Native Input:</label>
+            <input name="Native" ref={register} />
+          </section>
+
+          <section>
+            <label>MUI Checkbox</label>
+            <Controller
+              as={<Checkbox />}
+              name="Checkbox"
+              type="checkbox"
+              control={control}
+            />
+          </section>
+
+          <section>
+            <label>Radio Group</label>
+            <Controller
+              as={
+                <RadioGroup aria-label="gender" name="gender1">
+                  <FormControlLabel
+                    value="female"
+                    control={<Radio />}
+                    label="Female"
+                  />
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label="Male"
+                  />
+                </RadioGroup>
+              }
+              name="RadioGroup"
+              control={control}
+            />
+          </section>
+
+          <section>
+            <label>MUI TextField</label>
+            <Controller as={<TextField />} name="TextField" control={control} />
+          </section>
+
+          <section>
+            <label>MUI Select</label>
+            <Controller
+              as={
+                <Select>
+                  <MenuItem value={10}>Ten</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+              }
+              name="Select"
+              control={control}
+            />
+          </section>
+
+          <section>
+            <label>MUI Switch</label>
+            <Controller
+              as={<Switch value="checkedA" />}
+              type="checkbox"
+              name="switch"
+              control={control}
+            />
+          </section>
+
+          <section>
+            <label>React Select</label>
+            <Controller
+              as={<ReactSelect />}
+              options={options}
+              name="ReactSelect"
+              isClearable
+              control={control}
+              onChange={([selected]) => {
+                return { value: selected };
+              }}
+            />
+          </section>
+        </div>
