@@ -4,11 +4,7 @@
 
 It looks like you are just setting this up in a new site on Netlify. Woohoo!
 
-{% if init.siteName %}
-  {% set envHelpLink = "https://app.netlify.com/sites/" + init.siteName + "/settings/deploys#build-environment-variables" %}
-{% else %}
-  {% set envHelpLink = "https://www.netlify.com/docs/continuous-deployment/#build-environment-variables" %}
-{% endif %}
+
 
 You'll just need to [add a few environment variables]({{envHelpLink}}) your site before everything will work.
 
