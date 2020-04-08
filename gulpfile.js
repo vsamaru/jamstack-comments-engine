@@ -72,20 +72,20 @@ gulp.task('check-init', function (done) {
 
     // Automatically detect and set the comments queue form environment variable.
     var siteDomain = process.env.URL.split("://")[1];
-    var url = `https://api.netlify.com/api/v1/sites/${siteDomain}/forms/?access_token=${process.env.API_AUTH}`;
+    var url = `https://api.netlify.com/api/v1`;
 
     // REFACTOR: do this conditionally.. not for every build after envs are init'd
     request(url, function(err, response, body){
       if(!err && response.statusCode === 200){
         var body = JSON.parse(body);
         var approvedForm = body.filter(function(f){
-          return f.name == 'approved-comments';
+          return f.name == '';
         });
         var initStatus = {
           'environment' : true,
           'approved_form_id' : approvedForm[0].id,
           'rootURL' :  process.env.URL,
-          'siteName' : siteDomain.replace('.netlify.com', '')
+          'siteName' : siteDomain.replace('', '')
         };
         saveInitStatus(initStatus);
         done();
