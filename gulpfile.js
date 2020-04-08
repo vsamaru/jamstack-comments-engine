@@ -72,8 +72,7 @@ gulp.task('check-init', function (done) {
 
     // Automatically detect and set the comments queue form environment variable.
     var siteDomain = process.env.URL.split("://")[1];
-    var url = `https://api.netlify.com/api/v1/sites/${siteDomain}/forms/?access_token=${process.env.API_AUTH}`;
-
+ 
     // REFACTOR: do this conditionally.. not for every build after envs are init'd
     request(url, function(err, response, body){
       if(!err && response.statusCode === 200){
@@ -84,8 +83,8 @@ gulp.task('check-init', function (done) {
         var initStatus = {
           'environment' : true,
           'approved_form_id' : approvedForm[0].id,
-          'rootURL' :  process.env.URL,
-          'siteName' : siteDomain.replace('.netlify.com', '')
+          'rootURL' :  process.env.URL
+         
         };
         saveInitStatus(initStatus);
         done();
@@ -132,7 +131,6 @@ gulp.task('generate', shell.task('eleventy --config=eleventy.js'));
 gulp.task("get:comments", function (done) {
 
   // set up our request with appropriate auth token and Form ID
-  var url = `https://api.netlify.com/api/v1/forms/${process.env.APPROVED_COMMENTS_FORM_ID}/submissions/?access_token=${process.env.API_AUTH}`;
 
   // Go and get the data from Netlify's submissions API
   request(url, function(err, response, body){
