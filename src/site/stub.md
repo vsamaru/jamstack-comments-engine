@@ -1,5 +1,5 @@
-<form name="approved-comments" netlify netlify-honeypot="full-name">
-  <input type="text" name="full-name">
+<form name="approved-comments">
+  <input type="url" name="url">
   <input type="text" name="path">
   <input type="text" name="received">
   <input type="text" name="name" id="name">
